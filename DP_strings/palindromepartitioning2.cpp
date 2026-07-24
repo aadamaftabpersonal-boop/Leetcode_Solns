@@ -21,7 +21,6 @@ public:
         if (t[i] != -1) return t[i];
 
         int result = INT_MAX;
-        
         // Try every possible end point for the first palindrome segment s[i...k]
         for (int k = i; k < n; k++) {
             if (ispalin(s, i, k)) {
