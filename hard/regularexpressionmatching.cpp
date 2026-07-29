@@ -22,3 +22,30 @@ public:
         return solve(s, p);
     }
 };
+
+
+class Solution {
+public:
+    int t[21][21];
+    bool solve(int i, int j, string &s, string &p){
+        if(j==p.length()){
+            if(i==s.length())return t[i][j] = true;
+            return t[i][j]=false;
+        }
+        if(t[i][j]!=-1)return t[i][j];
+        bool first_char_match = false;
+        if(i<s.length() && (s[i]==p[j] || p[j]=='.')){
+            first_char_match = true;
+        }
+        if(j+1 < p.length() && p[j+1]=='*'){
+            bool no_take = solve(i, j+2, s, p);
+            bool take = first_char_match && solve(i+1, j, s, p);
+            return t[i][j] = take || no_take;
+        }
+        return t[i][j] = first_char_match && solve(i+1, j+1, s, p);
+    }
+    bool isMatch(string s, string p){
+        memset(t, -1, sizeof(t));
+        return solve(0, 0, s, p);
+    }
+};
