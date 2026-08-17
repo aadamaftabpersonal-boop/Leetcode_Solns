@@ -20,3 +20,4 @@ public:
 
 //if nums[mid]>nums[high], sure that array is rotated
 //for a normal array -> nums[low]<nums[mid]<nums[high]
+//mathematically can prove that if nums[mid]>nums[high], nums[low]>nums[high]
