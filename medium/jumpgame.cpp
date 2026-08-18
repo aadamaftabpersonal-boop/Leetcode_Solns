@@ -31,3 +31,17 @@ mistakes:
 2. use dp(n, -1) instead of bool
 3. -1 is a truthy value
 4. check if some branch returns then set dp[i] = true*/
+
+//O(n), O(1) space soln
+class Solution {
+public:
+    bool canJump(vector<int>& nums){
+        int n = nums.size();
+        int lastgoodindex=n-1;
+        for(int i=n-2;i>=0;i--){
+            if(nums[i] + i >=lastgoodindex)lastgoodindex=i;
+        }
+        return lastgoodindex==0;
+    }
+};
+//start from back and find most reachable index and keep updating
