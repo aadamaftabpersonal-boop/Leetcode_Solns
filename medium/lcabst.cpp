@@ -21,3 +21,5 @@ public:
         return root;
     }
 };
+
+//preorder - root->left->right, inorder - left->root->right
